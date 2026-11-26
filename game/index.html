@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Coral Bay Air Rally</title>
+<style>
+  html, body { margin: 0; padding: 0; background: #0a1622; height: 100%; }
+  body { display: flex; align-items: center; justify-content: center; }
+  canvas {
+    display: block;
+    width: min(100vw, calc(100vh * 1.6));
+    height: min(100vh, calc(100vw / 1.6));
+    background: #1d4e89;
+    cursor: crosshair;
+  }
+</style>
+</head>
+<body>
+<canvas id="game" width="1280" height="800"></canvas>
+<script type="module">
+  import { Game } from './src/main.js';
+  const params = new URLSearchParams(window.location.search);
+  const seed = Number(params.get('seed') || '1') || 1;
+  const game = new Game(document.getElementById('game'), seed);
+  game.start();
+</script>
+</body>
+</html>
